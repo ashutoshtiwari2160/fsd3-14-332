@@ -1,26 +1,46 @@
-import {EventEmitter} from 'node:events'
+import { EventEmitter } from "node:events";
 
-const sayHi = (name) => { 
-  console.log('$(name) logged in') ;
-};
-const task = new EventEmitter () ;
-task.once("greet",()=>{
-console.log("system started") ;
+class OrderSystem extends EventEmitter {
+  placeOrder(order) {
+    console.log(`order received : #${order.id} for ${order.customerName}`);
+    console.log("Saving order to database");
+    this.emit("orderPlaced", order);
+  }
+}
+const orderObj = new OrderSystem();
+// sending email
+orderObj.on("orderPlaced", (order) => {
+  console.log(`Sending confirmation email to ${order.email}`);
 });
-task.on("greet",sayHi) ;
-task.on("greet",(name)=>){
-  console.log($(name) starts working ) ;
-}
-task.once("exit",name) => {
-  console.log(system shutdown by $(name){
-   
+// inventory service
+orderObj.on("orderPlaced", (order) => {
+  order.forEach((item) => {
+    console.log(`Reducing stock of ${item.name} by ${item.qty}`);
   });
-}
-task.emit("greet","Rahul Singh") ;
-console.log() ;
-task.off("greet",sayHI);
-task.emit("greet"."Manish Sinha");
-task.emit("greet","Mukesh Gupta") ;
-console.log() ;
-task.emit("exit","Manager");//execute only once
-task.emit("exit","Employee")
+});
+
+//shipping service
+orderObj.on("orderPlaced", (order) => {
+  console.log(`Creating shipping label for order # ${order.id}`);
+});
+
+//Logging
+orderObj.on("orderPlaced", (order) => {
+  console.log(`Logging order ${order.id} - total # ${order.total}`);
+});
+
+//Error
+orderObj.on("error", (err) => {
+  console.log(`Error in order ${err}`);
+});
+
+OrderSystem.placeOrder({
+  id: "ORD10001",
+  customerName: "Ramesh Solanki",
+  email: "ramesh.sol27@gmail.com",
+  items: [
+    { name: "wireless mouse", qty: 1 },
+    { name: "wireless headset", qty: 2 },
+  ],
+  total: 2399,
+});
