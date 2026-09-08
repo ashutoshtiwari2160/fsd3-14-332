@@ -8,7 +8,7 @@ const server =http.createServer((req,res)=>{
          res.end(`checkout
             `);
     }
-    else{
+    else{ 
         res.statusCode = 404;
         res.end(`
             <h1>404, Not found</h1>

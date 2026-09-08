@@ -1,15 +1,25 @@
-import http from 'http';
-const server = http.createServer() ;
-server.on('request',(req,res)=>{
-  res.write("<h1>Welcome to server side programming</h1>");
-  res.write("<h2>NOde is tracking the file</h2>") ;
+import http from "http"
+// import teams.js
+import * as teams from "teams.js";
 
-  res.end();
-})
+const PORT=5000;
+const server = http.createServer((req,res)=>{
+    if(req.url==="/" && req.method=="GET"){
+        const teams= teams.getTeamsAllTeams();
+        res.writeHead(JSON.stringify(teams));
+        // res.end();
+    }
+    else {
+        res.statusCode=404;
+        // res.end();
+    }
+});
 
-server.listen(5000,()=>{
-  console.log("Server is runninng");
-}) ; 
-// localhost:50http00
-// npm start 
-// npm run 
+
+// const server = http.createServer((req,res)=>{
+   
+//     res.end("<h1>SIH Internal </h1>");
+// });
+
+
+server.listen(5000,()=>console.log("server is running"));
