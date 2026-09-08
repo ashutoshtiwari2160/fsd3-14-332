@@ -10,4 +10,6 @@ server.on('request',(req,res)=>{
 server.listen(5000,()=>{
   console.log("Server is runninng");
 }) ; 
-// http;//localhost:5000
+// localhost:50http00
+// npm start 
+// npm run 
