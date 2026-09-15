@@ -1,3 +1,9 @@
+For future changes, your normal workflow is simply:
+git add .
+git commit -m "describe your changes"
+git push
+
+
 #NPM Project 
 
 1.create project folder
