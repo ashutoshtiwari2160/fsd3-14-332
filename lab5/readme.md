@@ -1,0 +1,13 @@
+# Express 
+Fast, unoponionated , minimalist web framework for Node.js
+
+1. create npm project 'npm init -y'
+2. update package.json
+    'type:module'
+3. install nodemon  with 'npm i modemon -D'
+4.install express with 'npm i express'
+5.update package.json to run the project, update script property 
+    "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },

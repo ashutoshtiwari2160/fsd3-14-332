@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bluetooth Devices</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e7eaf0;
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 700;
+      color: #1769ff;
+    }
+
+    .bluetooth-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #1769ff;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    nav a {
+      color: #596579;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #1769ff;
+    }
+
+    .hero {
+      max-width: 1150px;
+      margin: auto;
+      padding: 70px 25px 45px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #1769ff;
+    }
+
+    .hero p {
+      color: #697386;
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 13px 20px;
+    }
+
+    .primary {
+      background: #1769ff;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #0756e6;
+    }
+
+    .secondary {
+      background: white;
+      color: #334155;
+      border: 1px solid #dfe4ec;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, #1769ff, #4b8cff);
+      border-radius: 25px;
+      padding: 30px;
+      color: white;
+      box-shadow: 0 20px 50px rgba(23, 105, 255, 0.2);
+    }
+
+    .hero-card h2 {
+      margin-bottom: 22px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      background: #4ade80;
+      border-radius: 50%;
+    }
+
+    .mini-device {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 15px;
+      border-radius: 14px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .devices-section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 20px 25px 70px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 26px;
+    }
+
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .device-card {
+      background: white;
+      border: 1px solid #e6e9ef;
+      border-radius: 17px;
+      padding: 22px;
+      transition: .2s;
+    }
+
+    .device-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(20, 30, 50, .08);
+    }
+
+    .device-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .device-icon {
+      width: 48px;
+      height: 48px;
+      background: #edf4ff;
+      color: #1769ff;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+    }
+
+    .connected {
+      color: #16a34a;
+      background: #eaf9ef;
+      padding: 6px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .available {
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 6px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .device-card h3 {
+      margin-bottom: 7px;
+    }
+
+    .device-card p {
+      color: #7a8495;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .device-info {
+      display: flex;
+      justify-content: space-between;
+      color: #64748b;
+      font-size: 13px;
+      border-top: 1px solid #edf0f4;
+      padding-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #8a93a3;
+      font-size: 13px;
+      background: white;
+      border-top: 1px solid #e7eaf0;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 45px;
+      }
+
+      .device-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      nav {
+        display: none;
+      }
+
+      .device-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="bluetooth-icon">ᛒ</div>
+      BlueConnect
+    </div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="/about">About</a>
+      <a href="/enquiry">Enquiry</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div>
+        <h1>Connect your <span>Bluetooth</span> devices.</h1>
+
+        <p>
+          Find, manage and connect to nearby Bluetooth devices from one
+          simple dashboard.
+        </p>
+
+        <div class="buttons">
+          <button class="primary" onclick="scanDevices()">
+            Scan for Devices
+          </button>
+
+          <button class="secondary" onclick="showInfo()">
+            How it works
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>Bluetooth Status</h2>
+
+        <div class="status">
+          <span class="dot"></span>
+          Bluetooth is active
+        </div>
+
+        <div class="mini-device">
+          <span>🎧 AirPods Pro</span>
+          <strong>98%</strong>
+        </div>
+
+        <div class="mini-device">
+          <span>⌨️ Magic Keyboard</span>
+          <strong>82%</strong>
+        </div>
+
+        <div class="mini-device">
+          <span>🖱️ Wireless Mouse</span>
+          <strong>65%</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="devices-section" id="devices">
+      <div class="section-header">
+        <h2>Nearby Devices</h2>
+        <button class="primary" onclick="scanDevices()">↻ Scan</button>
+      </div>
+
+      <div class="device-grid" id="deviceGrid">
+
+        <div class="device-card">
+          <div class="device-top">
+            <div class="device-icon">🎧</div>
+            <span class="connected">Connected</span>
+          </div>
+          <h3>AirPods Pro</h3>
+          <p>Wireless Headphones</p>
+          <div class="device-info">
+            <span>Signal: Strong</span>
+            <span>98%</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="device-top">
+            <div class="device-icon">⌨️</div>
+            <span class="connected">Connected</span>
+          </div>
+          <h3>Magic Keyboard</h3>
+          <p>Bluetooth Keyboard</p>
+          <div class="device-info">
+            <span>Signal: Strong</span>
+            <span>82%</span>
+          </div>
+        </div>
+
+        <div class="device-card">
+          <div class="device-top">
+            <div class="device-icon">🖱️</div>
+            <span class="available">Available</span>
+          </div>
+          <h3>Wireless Mouse</h3>
+          <p>Bluetooth Mouse</p>
+          <div class="device-info">
+            <span>Signal: Medium</span>
+            <span>65%</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 BlueConnect · Bluetooth Device Manager
+  </footer>
+
+  <script>
+    function scanDevices() {
+      const button = document.querySelector(".section-header .primary");
+      const originalText = button.innerHTML;
+
+      button.innerHTML = "Scanning...";
+      button.disabled = true;
+
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+
+        alert("Scan complete! Nearby Bluetooth devices have been refreshed.");
+      }, 1500);
+    }
+
+    function showInfo() {
+      alert(
+        "Click 'Scan for Devices' to search for nearby Bluetooth devices. " +
+        "This demo page uses sample devices; real Bluetooth scanning requires " +
+        "the Web Bluetooth API and browser/device support."
+      );
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquiry | BlueConnect</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e7eaf0;
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1769ff;
+      font-size: 21px;
+      font-weight: 700;
+    }
+
+    .bluetooth-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #1769ff;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    nav a {
+      color: #596579;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #1769ff;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1769ff, #4b8cff);
+      color: white;
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 52px);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      opacity: .9;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 55px 25px 70px;
+    }
+
+    .enquiry-wrapper {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 30px;
+    }
+
+    .info,
+    .form-box {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 12px 35px rgba(20, 30, 50, .06);
+    }
+
+    .info h2,
+    .form-box h2 {
+      margin-bottom: 12px;
+    }
+
+    .info > p {
+      color: #697386;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .contact-icon {
+      min-width: 42px;
+      height: 42px;
+      background: #edf4ff;
+      color: #1769ff;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+    }
+
+    .contact-item h3 {
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .contact-item p {
+      color: #697386;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #dfe4ec;
+      border-radius: 10px;
+      padding: 13px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #1769ff;
+      box-shadow: 0 0 0 3px rgba(23, 105, 255, .1);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: #1769ff;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #0756e6;
+    }
+
+    #successMessage {
+      display: none;
+      margin-top: 15px;
+      padding: 13px;
+      background: #eaf9ef;
+      color: #15803d;
+      border-radius: 9px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: white;
+      border-top: 1px solid #e7eaf0;
+      color: #8a93a3;
+      font-size: 13px;
+    }
+
+    @media (max-width: 750px) {
+      nav {
+        display: none;
+      }
+
+      .enquiry-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <div class="bluetooth-icon">ᛒ</div>
+    BlueConnect
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="enquiry.html" class="active">Enquiry</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Have an Enquiry?</h1>
+  <p>We're here to help with your Bluetooth-related questions.</p>
+</section>
+
+<main class="container">
+
+  <div class="enquiry-wrapper">
+
+    <div class="info">
+
+      <h2>Get in Touch</h2>
+
+      <p>
+        Have a question about BlueConnect, Bluetooth devices or our services?
+        Send us your enquiry and our team will get back to you.
+      </p>
+
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div>
+          <h3>Email</h3>
+          <p>support@blueconnect.com</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h3>Phone</h3>
+          <p>+91 98765 43210</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">⏰</div>
+        <div>
+          <h3>Working Hours</h3>
+          <p>Monday – Friday, 9:00 AM – 6:00 PM</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-box">
+
+      <h2>Send an Enquiry</h2>
+
+      <form id="enquiryForm">
+
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Enquiry Type</label>
+          <select id="subject" required>
+            <option value="">Select an option</option>
+            <option>Bluetooth Device</option>
+            <option>Technical Support</option>
+            <option>Partnership</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            placeholder="Write your enquiry here..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Submit Enquiry
+        </button>
+
+        <div id="successMessage">
+          ✓ Thank you! Your enquiry has been submitted successfully.
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  © 2026 BlueConnect · Bluetooth Device Manager
+</footer>
+
+<script>
+  document.getElementById("enquiryForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    document.getElementById("successMessage").style.display = "block";
+
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
