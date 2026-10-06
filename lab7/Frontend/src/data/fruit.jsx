@@ -7,11 +7,12 @@ const Fruits = [
 { title: "Apple", id: 4, isFruit: true },
 ];
 
-const ListItem = Fruits.map((item) => (
-<li key={item.id}>{item.title}</li> ));
+const ListItem = Fruits.map((item) => 
+(<li key={item.id}>{item.title}</li> ));
 console.log(ListItem);
+
 const Fruit = () => { 
-return <ul>{ListItem}</ul>
+return <ul>{ListItem}</ul> ;
 };
 
 export default Fruit;
