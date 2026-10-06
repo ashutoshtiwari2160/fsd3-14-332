@@ -1,0 +1,17 @@
+import React from "react";
+
+const Fruits = [
+{ title: "Cabbage", id: 1, isFruit: false },
+{ title: "Potato", id: 2, isFruit: false },
+{ title: "Banana", id: 3, isFruit: true },
+{ title: "Apple", id: 4, isFruit: true },
+];
+
+const ListItem = Fruits.map((item) => (
+<li key={item.id}>{item.title}</li> ));
+console.log(ListItem);
+const Fruit = () => { 
+return <ul>{ListItem}</ul>
+};
+
+export default Fruit;
