@@ -1,3 +1,4 @@
+
 const b1 = {
   picUrl: "https://m.media-amazon.com/images/I/518+W2zr3BL._AC_UY218_.jpg",
   bname: "React Design Pattern",
@@ -46,3 +47,4 @@ export default function App() {
     </>
   );
 }
+                    
